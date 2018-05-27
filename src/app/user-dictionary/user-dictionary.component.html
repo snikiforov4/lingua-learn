@@ -1,14 +1,17 @@
 <h2>Dictionary</h2>
 
-<mat-list [disableRipple]="false">
-  <mat-list-item *ngFor="let entry of dictionary"> {{entry.word}} - {{entry.translation}} </mat-list-item>
-</mat-list>
+<mat-nav-list>
+  <mat-list-item *ngFor="let entry of dictionary" (click)="selectEntry(entry)"> {{entry.word}} - {{entry.translation}} </mat-list-item>
+</mat-nav-list>
 
-<div>
+<mat-divider></mat-divider>
+
+<div *ngIf="selectedEntry">
+  <h3>Edit entry:</h3>
   <label>word:
-    <input [(ngModel)]="entry.word" placeholder="word">
+    <input [(ngModel)]="selectedEntry.word" placeholder="word">
   </label>
   <label>translation:
-    <input [(ngModel)]="entry.translation" placeholder="translation">
+    <input [(ngModel)]="selectedEntry.translation" placeholder="translation">
   </label>
 </div>

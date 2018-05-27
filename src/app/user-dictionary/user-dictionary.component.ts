@@ -10,11 +10,7 @@ import { DICTIONARY } from '../mock-dictionary';
 export class UserDictionaryComponent implements OnInit {
   dictionary = DICTIONARY;
 
-  entry: DictionaryEntry = {
-    id: 1,
-    word: 'Hero',
-    translation: 'Герой',
-  };
+  selectedEntry: DictionaryEntry;
 
   constructor() {
   }
@@ -22,4 +18,7 @@ export class UserDictionaryComponent implements OnInit {
   ngOnInit() {
   }
 
+  selectEntry(entry: DictionaryEntry) {
+    this.selectedEntry = entry;
+  }
 }
