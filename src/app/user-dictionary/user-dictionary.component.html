@@ -1,7 +1,8 @@
 <h2>Dictionary</h2>
 
-<div><span>word: </span>{{entry.word}}</div>
-<div><span>translation: </span>{{entry.translation}}</div>
+<mat-list [disableRipple]="false">
+  <mat-list-item *ngFor="let entry of dictionary"> {{entry.word}} - {{entry.translation}} </mat-list-item>
+</mat-list>
 
 <div>
   <label>word:

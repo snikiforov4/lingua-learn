@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DictionaryEntry } from '../dictionary-entry';
+import { DICTIONARY } from '../mock-dictionary';
 
 @Component({
   selector: 'user-dictionary',
@@ -7,6 +8,8 @@ import { DictionaryEntry } from '../dictionary-entry';
   styleUrls: ['./user-dictionary.component.css']
 })
 export class UserDictionaryComponent implements OnInit {
+  dictionary = DICTIONARY;
+
   entry: DictionaryEntry = {
     id: 1,
     word: 'Hero',
