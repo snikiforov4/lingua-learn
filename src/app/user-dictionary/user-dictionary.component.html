@@ -2,3 +2,12 @@
 
 <div><span>word: </span>{{entry.word}}</div>
 <div><span>translation: </span>{{entry.translation}}</div>
+
+<div>
+  <label>word:
+    <input [(ngModel)]="entry.word" placeholder="word">
+  </label>
+  <label>translation:
+    <input [(ngModel)]="entry.translation" placeholder="translation">
+  </label>
+</div>
