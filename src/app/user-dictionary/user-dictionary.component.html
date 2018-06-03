@@ -1,0 +1,18 @@
+<mat-nav-list>
+  <mat-list-item *ngFor="let entry of dictionary" (click)="selectEntry(entry)"> {{entry.word}} - {{entry.translation}} </mat-list-item>
+</mat-nav-list>
+
+<div *ngIf="selectedEntry">
+  <h3>Edit entry:</h3>
+  <label>word:
+    <input [(ngModel)]="selectedEntry.word" placeholder="word">
+  </label>
+  <label>translation:
+    <input [(ngModel)]="selectedEntry.translation" placeholder="translation">
+  </label>
+</div>
+
+<button mat-raised-button color="primary">
+  <mat-icon>library_add</mat-icon>
+  Add
+</button>

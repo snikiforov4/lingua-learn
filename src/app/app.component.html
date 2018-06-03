@@ -1,0 +1,19 @@
+<h1>Learn new language with fun!</h1>
+
+<mat-tab-group [dynamicHeight]="true">
+  <mat-tab label="Dictionary">
+    <ng-template matTabContent>
+      <user-dictionary></user-dictionary>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Training">
+    <ng-template matTabContent>
+      <training-panel></training-panel>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Settings">
+    <ng-template matTabContent>
+      <user-settings></user-settings>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>
