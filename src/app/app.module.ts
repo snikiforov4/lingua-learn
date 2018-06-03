@@ -14,14 +14,14 @@ import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {UserDictionaryComponent} from './user-dictionary/user-dictionary.component';
 import { TrainingPanelComponent } from './training-panel/training-panel.component';
-import {SettingsComponent} from './settings/settings.component';
+import {UserSettingsComponent} from './user-settings/user-settings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserDictionaryComponent,
     TrainingPanelComponent,
-    SettingsComponent,
+    UserSettingsComponent,
   ],
   imports: [
     BrowserModule,
