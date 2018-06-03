@@ -1,6 +1,8 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
@@ -12,7 +14,7 @@ import {MatInputModule} from '@angular/material/input';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {UserDictionaryComponent} from './user-dictionary/user-dictionary.component';
-import { TrainingPanelComponent } from './training-panel/training-panel.component';
+import {TrainingPanelComponent} from './training-panel/training-panel.component';
 import {UserSettingsComponent} from './user-settings/user-settings.component';
 
 @NgModule({
@@ -27,6 +29,7 @@ import {UserSettingsComponent} from './user-settings/user-settings.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatTabsModule,
     MatListModule,
     MatButtonModule,

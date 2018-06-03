@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { DictionaryEntry } from '../dictionary-entry';
-import { DICTIONARY } from '../mock-dictionary';
+import {Component, OnInit} from '@angular/core';
+import {DictionaryEntry} from '../dictionary-entry';
+import {DICTIONARY} from '../mock-dictionary';
+import {TranslationService} from "../translation.service";
 
 @Component({
   selector: 'user-dictionary',
@@ -12,13 +13,21 @@ export class UserDictionaryComponent implements OnInit {
 
   selectedEntry: DictionaryEntry;
 
-  constructor() {
+  constructor(private translationService: TranslationService) {
   }
 
   ngOnInit() {
+    this.translateHello();
   }
 
   selectEntry(entry: DictionaryEntry) {
     this.selectedEntry = entry;
+  }
+
+  private translateHello() {
+    let word = 'Hello';
+    this.translationService.translate(word)
+    // .subscribe(translation => this.dictionary.push({id: 42, word, translation}));
+      .subscribe(translation => console.log(translation));
   }
 }
