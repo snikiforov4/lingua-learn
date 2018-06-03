@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
-import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -30,7 +29,6 @@ import {UserSettingsComponent} from './user-settings/user-settings.component';
     BrowserAnimationsModule,
     MatTabsModule,
     MatListModule,
-    MatDividerModule,
     MatButtonModule,
     MatIconModule,
     MatFormFieldModule,
