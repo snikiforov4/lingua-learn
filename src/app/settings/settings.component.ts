@@ -10,6 +10,7 @@ import {FormControl} from '@angular/forms';
 export class SettingsComponent implements OnInit {
   languagesList = ['english', 'russian'];
   languageControl = new FormControl(this.languagesList[0]);
+  numOfWordsControl = new FormControl(10);
 
   constructor() { }
 
