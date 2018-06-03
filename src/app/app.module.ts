@@ -11,15 +11,17 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 
 import {AppComponent} from './app.component';
-import {UserDictionaryComponent} from './user-dictionary/user-dictionary.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {UserDictionaryComponent} from './user-dictionary/user-dictionary.component';
+import { TrainingPanelComponent } from './training-panel/training-panel.component';
 import {SettingsComponent} from './settings/settings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserDictionaryComponent,
-    SettingsComponent
+    TrainingPanelComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
