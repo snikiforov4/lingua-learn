@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {DictionaryEntry} from '../dictionary-entry';
 
 @Component({
   selector: 'training-panel',
@@ -6,8 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./training-panel.component.css']
 })
 export class TrainingPanelComponent implements OnInit {
+  entry: DictionaryEntry = {
+    id: 42,
+    word: 'word',
+    translation: 'слово'
+  };
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
