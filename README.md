@@ -1,6 +1,6 @@
 # LinguaLearn
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
+This project is using [Yandex Translation API](https://tech.yandex.ru/translate/) which means that an API key should be provided inside `./src/app/keys.ts` through `yandexApiKey` constant.
 
 ## Development server
 
