@@ -10,6 +10,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -17,6 +18,7 @@ import {UserDictionaryComponent} from './user-dictionary/user-dictionary.compone
 import {TrainingPanelComponent} from './training-panel/training-panel.component';
 import {UserSettingsComponent} from './user-settings/user-settings.component';
 import {TranslationService} from "./translation.service";
+import {DictionaryEntryDialog} from './dictionary-entry-dialog/dictionary-entry-dialog.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import {TranslationService} from "./translation.service";
     UserDictionaryComponent,
     TrainingPanelComponent,
     UserSettingsComponent,
+    DictionaryEntryDialog,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,9 @@ import {TranslationService} from "./translation.service";
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
+    MatDialogModule,
   ],
+  entryComponents: [DictionaryEntryDialog],
   providers: [TranslationService],
   bootstrap: [AppComponent]
 })
