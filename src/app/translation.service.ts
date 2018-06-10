@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
+import {map, catchError} from 'rxjs/operators';
 import {yandexApiKey} from './keys';
 
 @Injectable({
@@ -12,8 +13,18 @@ export class TranslationService {
   constructor(private http: HttpClient,) {
   }
 
-  translate(text: string): Observable<string> {
+  translate(text: string): Observable<string[]> {
     const url = `${this.translateUrl}&lang=ru&text=${text}`;
-    return this.http.get<string>(url);
+    return this.http.get<any>(url)
+      .pipe(
+        map(resp => {
+          if (resp.code !== 200) {
+            throw Error(`received response with code: ${resp.code}`);
+          } else {
+            return resp.text;
+          }
+        }),
+        catchError(err => of([]))
+      );
   }
 }

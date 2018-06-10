@@ -25,9 +25,13 @@ export class UserDictionaryComponent implements OnInit {
   }
 
   private translateHello() {
-    let word = 'Hello';
+    let word = 'hello';
     this.translationService.translate(word)
-    // .subscribe(translation => this.dictionary.push({id: 42, word, translation}));
-      .subscribe(translation => console.log(translation));
+      .subscribe(translation => {
+        console.log(translation);
+        if (translation.length > 0) {
+          this.dictionary.push({id: 42, word, translation: translation[0]});
+        }
+      });
   }
 }

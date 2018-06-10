@@ -16,6 +16,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {UserDictionaryComponent} from './user-dictionary/user-dictionary.component';
 import {TrainingPanelComponent} from './training-panel/training-panel.component';
 import {UserSettingsComponent} from './user-settings/user-settings.component';
+import {TranslationService} from "./translation.service";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import {UserSettingsComponent} from './user-settings/user-settings.component';
     MatSelectModule,
     MatInputModule,
   ],
-  providers: [],
+  providers: [TranslationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
