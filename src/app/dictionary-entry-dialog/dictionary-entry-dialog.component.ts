@@ -13,8 +13,4 @@ export class DictionaryEntryDialog implements OnInit {
   ngOnInit() {
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
 }
