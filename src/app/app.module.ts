@@ -17,8 +17,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {UserDictionaryComponent} from './user-dictionary/user-dictionary.component';
 import {TrainingPanelComponent} from './training-panel/training-panel.component';
 import {UserSettingsComponent} from './user-settings/user-settings.component';
-import {TranslationService} from "./translation.service";
 import {DictionaryEntryDialog} from './dictionary-entry-dialog/dictionary-entry-dialog.component';
+import {TranslationService} from "./translation.service";
+import {DictionaryService} from "./dictionary.service";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import {DictionaryEntryDialog} from './dictionary-entry-dialog/dictionary-entry-
     MatDialogModule,
   ],
   entryComponents: [DictionaryEntryDialog],
-  providers: [TranslationService],
+  providers: [TranslationService, DictionaryService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
