@@ -29,7 +29,9 @@ export class UserDictionaryComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`result=${result}`);
+      if (result) {
+        console.log(`result=${JSON.stringify(result)}`);
+      }
     });
   }
 

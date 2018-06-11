@@ -1,5 +1,5 @@
 export class DictionaryEntry {
-  id: number;
-  word: string;
-  translation: string;
+  public id?: number;
+  public word: string;
+  public translation: string;
 }

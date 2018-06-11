@@ -1,13 +1,16 @@
 <h3 mat-dialog-title>Add new word</h3>
 <mat-dialog-content>
-  <mat-form-field class="full-width">
-    <input matInput placeholder="Word">
-  </mat-form-field>
-  <mat-form-field class="full-width">
-    <input matInput placeholder="Translation">
-  </mat-form-field>
+  <form [formGroup]="entry">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Word" formControlName="word" required>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Translation" formControlName="translation" required>
+    </mat-form-field>
+  </form>
 </mat-dialog-content>
+
 <mat-dialog-actions>
   <button mat-button [mat-dialog-close] color="warn">Cancel</button>
-  <button mat-button [mat-dialog-close]="true" color="primary">Add</button>
+  <button mat-button [disabled]="entry.invalid" [mat-dialog-close]="entry.getRawValue()" color="primary">Add</button>
 </mat-dialog-actions>
