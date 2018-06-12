@@ -1,24 +1,27 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {MatDialogRef} from "@angular/material";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'dictionary-entry-dialog',
   templateUrl: './dictionary-entry-dialog.component.html',
   styleUrls: ['./dictionary-entry-dialog.component.css']
 })
-export class DictionaryEntryDialog implements OnInit {
-  private entry: FormGroup;
+export class DictionaryEntryDialog {
+  private entryForm: FormGroup;
+  private autoTranslations: Observable<string[]>;
 
   constructor(public dialogRef: MatDialogRef<DictionaryEntryDialog>,
               private formBuilder: FormBuilder) {
-    this.entry = formBuilder.group({
+    this.entryForm = formBuilder.group({
       'word': ['', Validators.required],
       'translation': ['', Validators.required],
     });
   }
 
-  ngOnInit() {
-  }
+  get word() { return this.entryForm.get('word'); }
+
+  get translation() { return this.entryForm.get('translation'); }
 
 }
