@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {DICTIONARY} from './mock-dictionary';
 import {DictionaryEntry} from "./dictionary-entry";
 import {Observable, of} from "rxjs/index";
 
@@ -8,13 +7,13 @@ import {Observable, of} from "rxjs/index";
 })
 export class DictionaryService {
   private readonly dictionary: DictionaryEntry[];
-  private idCnt = 1;
+  private idCnt: number;
 
   constructor() {
-    this.dictionary = DICTIONARY.map(e => {
-      e.id = this.idCnt++;
-      return e;
-    });
+    this.dictionary = JSON.parse(window.localStorage.getItem('dict')) || [];
+    console.log(JSON.stringify(this.dictionary));
+    this.idCnt = this.dictionary.map(e => e.id)
+      .filter(id => id).reduce((p, c) => Math.max(p, c), 0) + 1;
   }
 
   getAllEntries(): Observable<DictionaryEntry[]> {
@@ -23,8 +22,9 @@ export class DictionaryService {
 
   addEntry(entry: DictionaryEntry): Observable<DictionaryEntry> {
     entry.id = this.idCnt++;
-    this.dictionary.unshift(entry);
     console.log(`Add new entry to dictionary=${JSON.stringify(entry)}`);
+    this.dictionary.unshift(entry);
+    window.localStorage.setItem('dict', JSON.stringify(this.dictionary));
     return of(entry);
   }
 }
