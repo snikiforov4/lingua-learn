@@ -27,4 +27,17 @@ export class DictionaryService {
     window.localStorage.setItem('dict', JSON.stringify(this.dictionary));
     return of(entry);
   }
+
+  editEntry(newEntry: DictionaryEntry): Observable<DictionaryEntry | undefined> {
+    const idx = this.dictionary.findIndex(e => e.id == newEntry.id);
+    if (idx > 0) {
+      console.log(`Edit entry with id=${newEntry.id}`);
+      this.dictionary[idx] = newEntry;
+      window.localStorage.setItem('dict', JSON.stringify(this.dictionary));
+      return of(newEntry);
+    } else {
+      console.log(`Entry with id=${newEntry.id} not found!`);
+      return of(undefined);
+    }
+  }
 }
