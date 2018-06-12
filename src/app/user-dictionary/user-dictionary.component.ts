@@ -10,7 +10,7 @@ import {DictionaryEntryDialog} from "../dictionary-entry-dialog/dictionary-entry
   styleUrls: ['./user-dictionary.component.css']
 })
 export class UserDictionaryComponent implements OnInit {
-  private dictionary: DictionaryEntry[];
+  dictionary: DictionaryEntry[];
 
   selectedEntry: DictionaryEntry;
 

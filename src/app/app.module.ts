@@ -10,6 +10,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDialogModule} from '@angular/material/dialog';
 
 import {AppComponent} from './app.component';
@@ -42,6 +43,7 @@ import {DictionaryService} from "./dictionary.service";
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
+    MatAutocompleteModule,
     MatDialogModule,
   ],
   entryComponents: [DictionaryEntryDialog],

@@ -2,23 +2,33 @@
 <mat-dialog-content>
   <form [formGroup]="entryForm">
     <mat-form-field class="full-width">
-      <input type="text" matInput placeholder="Word" formControlName="word" required>
+      <input type="text" matInput placeholder="Word"
+             formControlName="word" required>
       <mat-error *ngIf="word.hasError('required')">
         Word is <strong>required</strong>
       </mat-error>
     </mat-form-field>
+
     <mat-form-field class="full-width">
       <input type="text" matInput placeholder="Translation"
-             formControlName="translation" required>
-             <!--formControlName="translation" [matAutocomplete]="auto" required>-->
+             formControlName="translation" required
+             [matAutocomplete]="auto">
       <mat-error *ngIf="translation.hasError('required')">
         Translation is <strong>required</strong>
       </mat-error>
     </mat-form-field>
+
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let translation of autoTranslations | async" [value]="translation">
+        {{translation}}
+      </mat-option>
+    </mat-autocomplete>
   </form>
 </mat-dialog-content>
 
 <mat-dialog-actions>
   <button mat-button [mat-dialog-close] color="warn">Cancel</button>
-  <button mat-button [disabled]="entryForm.invalid" [mat-dialog-close]="entryForm.value" color="primary">Add</button>
+  <button mat-button [mat-dialog-close]="entryForm.value" [disabled]="entryForm.invalid" color="primary">
+    Add
+  </button>
 </mat-dialog-actions>
