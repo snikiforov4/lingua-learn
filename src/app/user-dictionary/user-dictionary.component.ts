@@ -1,6 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { DictionaryEntry } from '../dictionary-entry';
-import { DICTIONARY } from '../mock-dictionary';
+import {Component, OnInit} from '@angular/core';
+import {DictionaryEntry} from '../dictionary-entry';
+import {DictionaryService} from "../dictionary.service";
+import {MatDialog, MatDialogConfig} from "@angular/material";
+import {DictionaryEntryDialog} from "../dictionary-entry-dialog/dictionary-entry-dialog.component";
+
+const MAT_DIALOG_CONFIG: MatDialogConfig = {
+  width: '250px',
+};
 
 @Component({
   selector: 'user-dictionary',
@@ -8,17 +14,48 @@ import { DICTIONARY } from '../mock-dictionary';
   styleUrls: ['./user-dictionary.component.css']
 })
 export class UserDictionaryComponent implements OnInit {
-  dictionary = DICTIONARY;
+  dictionary: DictionaryEntry[];
 
-  selectedEntry: DictionaryEntry;
-
-  constructor() {
+  constructor(private dialog: MatDialog,
+              private dictionaryService: DictionaryService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.dictionaryService.getAllEntries()
+      .subscribe(dictionary => this.dictionary = dictionary);
   }
 
-  selectEntry(entry: DictionaryEntry) {
-    this.selectedEntry = entry;
+  editEntry(oldEntry: DictionaryEntry) {
+    let dialogRef = this.dialog.open(DictionaryEntryDialog, {
+      width: '250px',
+      data: oldEntry,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        let newEntry: DictionaryEntry = Object.assign({}, oldEntry, result);
+        this.dictionaryService.editEntry(newEntry)
+          .subscribe(savedEntry => {
+            if (savedEntry) {
+              const idx = this.dictionary.findIndex(e => e.id == savedEntry.id);
+              if (idx > 0) {
+                this.dictionary[idx] = savedEntry;
+              }
+            }
+          });
+      }
+    });
   }
+
+  addEntry(): void {
+    let dialogRef = this.dialog.open(DictionaryEntryDialog, MAT_DIALOG_CONFIG);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.dictionaryService.addEntry(result)
+          .subscribe(entry => this.dictionary.unshift(entry));
+      }
+    });
+  }
+
 }
